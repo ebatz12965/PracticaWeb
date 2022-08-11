@@ -12,6 +12,10 @@ public class PracticaClass {
     private String code;
     private String name;
     private String address;
+    
+   /* public PracticaClass(){
+        this.name="Edwing";
+    }*/
 
     public String getCode() {
         return code;

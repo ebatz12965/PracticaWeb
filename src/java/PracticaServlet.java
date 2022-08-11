@@ -34,9 +34,9 @@ public class PracticaServlet extends HttpServlet {
         try ( PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             persona = new PracticaClass();
-            persona.getCode(request.getParameter("code"));
-            persona.getName(request.getParameter("name"));
-            
+            persona.setCode(request.getParameter("code"));
+            persona.setName(request.getParameter("name"));
+            persona.setAddress(request.getParameter("address"));            
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -44,7 +44,9 @@ public class PracticaServlet extends HttpServlet {
             out.println("<title>Servlet PracticaServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PracticaServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Código " + persona.getCode() + "</h1>");
+            out.println("<h1>Nombre " + persona.getName() + "</h1>");
+            out.println("<h1>Dirección " + persona.getAddress() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
