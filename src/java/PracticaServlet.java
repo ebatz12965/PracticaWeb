@@ -18,6 +18,8 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet(urlPatterns = {"/PracticaServlet"})
 public class PracticaServlet extends HttpServlet {
     PracticaClass persona;
+    AlumnoController registroAlumno;
+     Alumno[] alumnosRegistrados;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -58,12 +60,27 @@ public class PracticaServlet extends HttpServlet {
             out.println("<td>"+ persona.getAddress() +"</td>");
             out.println("</tr>");
             out.println("</table>");*/
+            out.println("<div class=\"container\">");
             out.println("<div class='container-lg d-flex'> <a href='index.html' class=\"btn btn-success ml-auto\">Registrar Nuevo</a></div><br>");
             out.println("<table class=\"table table-hover table-striped\">");   
             out.println("<thead><tr> <th scope=\"col\">CODIGO</th> <th scope=\"col\">NOMBRE</th>\n" +
                                 "<th scope=\"col\">DIRECCION</th></tr></thead>"); 
             out.println("<thead><tr> <th scope=\"col\">" +persona.getCode()+ "</th> <th scope=\"col\">" +persona.getName()+ "</th>\n" +
                                 "<th scope=\"col\">" +persona.getAddress()+ "</th></tr></thead>"); 
+            out.println("<tbody>");
+            for (int i = 0; i < alumnosRegistrados.length; i++){
+                    if(!alumnosRegistrados[i].getCodigo().isEmpty()){
+                       out.println("<tr><td>" + alumnosRegistrados[i].getCodigo()+ "</td>");
+                       out.println("<td>" + alumnosRegistrados[i].getNombre() + "</td>");
+                       out.println("<td>" + alumnosRegistrados[i].getCorreo()+ "</td>");
+                       out.println("<td>" + alumnosRegistrados[i].getDireccion()+ "</td>");
+                       out.println("<td>"
+                               + "<button type=\"button\" class=\"btn btn-warning\"></i>Editar</button> "
+                               + "<button type=\"button\" class=\"btn btn-danger\">Eliminar</button>"
+                               + "</td></tr>");
+                    }
+                }
+            out.println("</div>");
             out.println("</body>");
             out.println("</html>");
         }
