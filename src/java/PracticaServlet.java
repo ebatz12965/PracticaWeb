@@ -41,12 +41,29 @@ public class PracticaServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PracticaServlet</title>");            
+            out.println("<title>Servlet PracticaServlet</title>");   
+            out.println("<title>Servlet NewServlet</title>");   
+            out.println("<link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css' integrity='sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N' crossorigin='anonymous'>");
+            out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct' crossorigin='anonymous'></script>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Código " + persona.getCode() + "</h1>");
-            out.println("<h1>Nombre " + persona.getName() + "</h1>");
-            out.println("<h1>Dirección " + persona.getAddress() + "</h1>");
+            /*out.println("<table class=\"table table-hover table-striped\"><tr>");
+            out.println("<td>Código</td>");
+            out.println("<td>Nombre</td>");
+            out.println("<td>Dirección</td>");
+            out.println("</tr>");
+            out.println("<tr>");
+            out.println("<td>"+ persona.getCode() +"</td>");
+            out.println("<td>"+ persona.getName() +"</td>");
+            out.println("<td>"+ persona.getAddress() +"</td>");
+            out.println("</tr>");
+            out.println("</table>");*/
+            out.println("<div class='container-lg d-flex'> <a href='index.html' class=\"btn btn-success ml-auto\">Registrar Nuevo</a></div><br>");
+            out.println("<table class=\"table table-hover table-striped\">");   
+            out.println("<thead><tr> <th scope=\"col\">CODIGO</th> <th scope=\"col\">NOMBRE</th>\n" +
+                                "<th scope=\"col\">DIRECCION</th></tr></thead>"); 
+            out.println("<thead><tr> <th scope=\"col\">" +persona.getCode()+ "</th> <th scope=\"col\">" +persona.getName()+ "</th>\n" +
+                                "<th scope=\"col\">" +persona.getAddress()+ "</th></tr></thead>"); 
             out.println("</body>");
             out.println("</html>");
         }
