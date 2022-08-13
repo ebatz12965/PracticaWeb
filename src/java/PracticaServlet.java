@@ -17,9 +17,9 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(urlPatterns = {"/PracticaServlet"})
 public class PracticaServlet extends HttpServlet {
-    PracticaClass persona;
-    AlumnoController registroAlumno;
-     Alumno[] alumnosRegistrados;
+    PersonaClass persona;
+    Persona registroPersona;
+     PersonaClass[] personasRegistradas;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,11 +34,19 @@ public class PracticaServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try ( PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            persona = new PracticaClass();
-            persona.setCode(request.getParameter("code"));
-            persona.setName(request.getParameter("name"));
-            persona.setAddress(request.getParameter("address"));            
+            persona = new PersonaClass(
+                request.getParameter("code"),
+                request.getParameter("name"),
+                request.getParameter("address")
+            );
+            
+            if(registroPersona==null){
+                registroPersona = new Persona();
+            }
+           
+            registroPersona.guardarPersona(persona);//almacenarlo en el array
+             personasRegistradas= registroPersona.getPersona();
+                       
             
             out.println("<!DOCTYPE html>");
             out.println("<html>");
@@ -49,17 +57,6 @@ public class PracticaServlet extends HttpServlet {
             out.println("<script src='https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct' crossorigin='anonymous'></script>");
             out.println("</head>");
             out.println("<body>");
-            /*out.println("<table class=\"table table-hover table-striped\"><tr>");
-            out.println("<td>Código</td>");
-            out.println("<td>Nombre</td>");
-            out.println("<td>Dirección</td>");
-            out.println("</tr>");
-            out.println("<tr>");
-            out.println("<td>"+ persona.getCode() +"</td>");
-            out.println("<td>"+ persona.getName() +"</td>");
-            out.println("<td>"+ persona.getAddress() +"</td>");
-            out.println("</tr>");
-            out.println("</table>");*/
             out.println("<div class=\"container\">");
             out.println("<div class='container-lg d-flex'> <a href='index.html' class=\"btn btn-success ml-auto\">Registrar Nuevo</a></div><br>");
             out.println("<table class=\"table table-hover table-striped\">");   
@@ -68,12 +65,11 @@ public class PracticaServlet extends HttpServlet {
             out.println("<thead><tr> <th scope=\"col\">" +persona.getCode()+ "</th> <th scope=\"col\">" +persona.getName()+ "</th>\n" +
                                 "<th scope=\"col\">" +persona.getAddress()+ "</th></tr></thead>"); 
             out.println("<tbody>");
-            for (int i = 0; i < alumnosRegistrados.length; i++){
-                    if(!alumnosRegistrados[i].getCodigo().isEmpty()){
-                       out.println("<tr><td>" + alumnosRegistrados[i].getCodigo()+ "</td>");
-                       out.println("<td>" + alumnosRegistrados[i].getNombre() + "</td>");
-                       out.println("<td>" + alumnosRegistrados[i].getCorreo()+ "</td>");
-                       out.println("<td>" + alumnosRegistrados[i].getDireccion()+ "</td>");
+            for (int i = 0; i < personasRegistradas.length; i++){
+                    if(!personasRegistradas[i].getCode().isEmpty()){
+                       out.println("<tr><td>" + personasRegistradas[i].getCode()+ "</td>");
+                       out.println("<td>" + personasRegistradas[i].getName() + "</td>");
+                       out.println("<td>" + personasRegistradas[i].getAddress()+ "</td>");
                        out.println("<td>"
                                + "<button type=\"button\" class=\"btn btn-warning\"></i>Editar</button> "
                                + "<button type=\"button\" class=\"btn btn-danger\">Eliminar</button>"

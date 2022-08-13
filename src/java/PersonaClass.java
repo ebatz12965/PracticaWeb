@@ -9,40 +9,41 @@
  */
 public class PersonaClass {
     
-    private String codigo;
-    private String nombre;
-    private String direccion;
+    private String code;
+    private String name;
+    private String address;
   
     
-    public PersonaClass (String codigo, String nombre, String direccion){
-        this.codigo=codigo;
-        this.nombre=nombre;
-        this.direccion=direccion;     
+    public PersonaClass (String code, String name, String address){
+        this.code=code;
+        this.name=name;
+        this.address=address;     
     }
 
-    public String getCodigo() {
-        return codigo;
+    public String getCode() {
+        return code;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getDireccion() {
-        return direccion;
+    public String getAddress() {
+        return address;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
+    public void setAddress(String address) {
+        this.address = address;
     }
-    
+
+ 
     
 }
